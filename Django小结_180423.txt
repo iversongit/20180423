@@ -1,0 +1,50 @@
+MVC(核心-->解耦，强制性的使应用程序的输入，处理和输出分开，减低各个模块之间的耦合性，方便变更，更容易重构代码，最大程度地实现了代码的重用): 
+    Model --> 进行业务逻辑判断，数据库存取（数据存取层，主要负责数据库的CRUD）
+
+    View --> 根据业务逻辑选择不同的视图（表现层）
+
+    Controller--> 将用户输入的指令和数据传递给业务模型（业务逻辑层，主要负责业务逻辑的处理）
+
+MVT(严格来说，Django的模式应该是MVT模式):
+    Model --> 负责业务与数据库（ORM）对象（主要负责数据库的CRUD）
+
+    View --> 负责业务逻辑并适当调用Model和Template（主要负责业务逻辑的处理）
+
+    Template --> 负责把页面渲染展示给用户
+
+注意:Django中还有一个url分发器，也叫作路由。主要用于将url请求发送给不同的View 处理，View在进行相关的业务逻辑处理
+    
+
+pip install virtualenv:安装virtualenv(虚拟环境)
+
+virtualenv --no-site-packages -p xxx 文件名: 安装env环境。xxx --> 指定python版本所在的路径
+virtualenv --no-site-packages 文件名:安装env环境。使用默认版本的python解释器
+
+
+
+cd 环境名/Script --> activate | deactivate 进入|退出env
+
+
+pip install django==1.11:安装django环境
+
+
+django-admin startproject 项目名:创建django项目
+python manage.py runserver [ip:]端口号:启动django项目，端口号可以不用写，启动的时候会默认随机创建一个可以使用的端口
+python manage.py startapp hello_app:创建app。该命令是在blog工程下创建一个名为hello_app的app
+
+app:
+    __init__.py:初始化
+    admin.py:管理后台注册模型
+    apps.py:settings.py里面注册app的时候需要适用到，一般不推荐这样使用
+    models.py:写模型的地方
+    views.py:写处理业务逻辑的地方
+
+迁移数据库
+python manage.py makemigrations
+python manage.py migrate
+
+path:查看PATH路径中的内容
+
+创建pycharm项目时需要指定虚拟环境，可以将不同版本的项目隔离开来
+项目上线时要将环境和项目分离开
+
